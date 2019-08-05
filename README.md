@@ -3,6 +3,8 @@
 
 _Presenters_: _**Iris Shen, Charles Huang, Chieh-Han Wu, Anshul Kanakia**_
 
+_Contributors_: _**Yuxiao Dong, Junjie Qian**_
+
 **Microsoft Research - Microsoft Academic Graph team**
 
 _Time_: _**Thu, August 08, 2019, 9:30 am - 12:30 pm and 1:30 pm - 4:30 pm**_
