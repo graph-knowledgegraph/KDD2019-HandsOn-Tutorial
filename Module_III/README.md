@@ -6,7 +6,7 @@ _Presenters_: _**Iris Shen, Charles Huang**_
 
 _Time_: _**Thu, August 08, 2019, 11:30 am - 12:30 pm**_
 
-[slides](./Module_III_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) [codes]
+[Slides](./Module_III_GraphKnowledgeGraph_KDD2019_HandsOn.pdf); [Codes](./NetworkSimilarityDemo.ipynb)
 
 ## What and Why
 
@@ -16,4 +16,5 @@ _Time_: _**Thu, August 08, 2019, 11:30 am - 12:30 pm**_
 
 ### Graph Neural Networks
 
-## Multi-sense similarity -- what does the "similairty" mean? 
+## Lab 3: Multi-sense similarity -- what does the "similairty" mean? 
+
