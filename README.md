@@ -42,3 +42,7 @@ Key takeaways for attendees will be:
 | 1:00pm  - 2:20pm       | [IV: Knowledge Graph Fundamentals and Construction](./Module_IV/README.md) | [link](./Module_IV/Module_IV_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | link |
 | 2:20pm  - 3:30pm       | [V: Knowledge Graph Inference and Application](./Module_V/README.md) | [link](./Module_V/Module_V_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | link |
 | 3:30pm  - 3:50pm       | [VI: Summary and looking forward](./Module_VI/README.md) | [link](./Module_VI/Module_VI_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | n/a |
+
+## Previous Edition
+
+For a longer and more thoeretic version of the _**graph and knowledge graph**_ contents, please see DAT278x edX Online Course: [**From Graph to Knowledge Graph: Algorithms and Applications** (GitHub link)](./edXCourseMaterials/README.md) (slides and codes only), (edX [link](https://www.edx.org/course/from-graph-to-knowledge-graph-algorithms-and-applications) here - with videos, quiz, final exam, and you can earn a certificate for this course at edX).
