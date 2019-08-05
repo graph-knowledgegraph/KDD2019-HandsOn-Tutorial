@@ -6,7 +6,7 @@ _Presenters_: _**Iris Shen, Charles Huang**_
 
 _Time_: _**Thu, August 08, 2019, 9:30 am - 10:30 am**_
 
-[slides] [codes]
+[slides](./Module_I_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) [codes]
 
 ## Target audiences
 
