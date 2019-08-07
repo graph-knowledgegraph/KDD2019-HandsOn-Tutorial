@@ -14,89 +14,54 @@ mag = MicrosoftAcademicGraph(container=MagContainer, account=MagAccount, sas=Mag
 # COMMAND ----------
 
 Affiliations = mag.getDataframe('Affiliations')
-print('Affiliations count:', Affiliations.count())
+display(Affiliations)
 
 # COMMAND ----------
 
 Authors = mag.getDataframe('Authors')
-print('Authors count:', Authors.count())
-
-# COMMAND ----------
-
 ConferenceInstances = mag.getDataframe('ConferenceInstances')
-print('ConferenceInstances count:', ConferenceInstances.count())
-
-# COMMAND ----------
-
 ConferenceSeries = mag.getDataframe('ConferenceSeries')
-print('ConferenceSeries count:', ConferenceSeries.count())
-
-# COMMAND ----------
-
 EntityRelatedEntities = mag.getDataframe('EntityRelatedEntities')
-print('EntityRelatedEntities count:', EntityRelatedEntities.count())
-
-# COMMAND ----------
-
 FieldsOfStudy = mag.getDataframe('FieldsOfStudy')
-print('FieldsOfStudy count:', FieldsOfStudy.count())
-
-# COMMAND ----------
-
 FieldOfStudyChildren = mag.getDataframe('FieldOfStudyChildren')
-print('FieldOfStudyChildren count:', FieldOfStudyChildren.count())
-
-# COMMAND ----------
-
 Journals = mag.getDataframe('Journals')
-print('Journals count:', Journals.count())
-
-# COMMAND ----------
-
 Papers = mag.getDataframe('Papers')
-print('Papers count:', Papers.count())
-
-# COMMAND ----------
-
 PaperAbstractsInvertedIndex = mag.getDataframe('PaperAbstractsInvertedIndex')
-print('PaperAbstractsInvertedIndex count:', PaperAbstractsInvertedIndex.count())
-
-# COMMAND ----------
-
 PaperAuthorAffiliations = mag.getDataframe('PaperAuthorAffiliations')
-print('PaperAuthorAffiliations count:', PaperAuthorAffiliations.count())
-
-# COMMAND ----------
-
 PaperCitationContexts = mag.getDataframe('PaperCitationContexts')
-print('PaperCitationContexts count:', PaperCitationContexts.count())
-
-# COMMAND ----------
-
 PaperFieldsOfStudy = mag.getDataframe('PaperFieldsOfStudy')
-print('PaperFieldsOfStudy count:', PaperFieldsOfStudy.count())
-
-# COMMAND ----------
-
 PaperReferences = mag.getDataframe('PaperReferences')
-print('PaperReferences count:', PaperReferences.count())
-
-# COMMAND ----------
-
 PaperUrls = mag.getDataframe('PaperUrls')
-print('PaperUrls count:', PaperUrls.count())
-
-# COMMAND ----------
-
 PaperRecommendations = mag.getDataframe('PaperRecommendations')
-print('PaperRecommendations count:', PaperRecommendations.count())
-
-# COMMAND ----------
-
 PaperResources = mag.getDataframe('PaperResources')
-print('PaperResources count:', PaperResources.count())
+RelatedFieldOfStudy = mag.getDataframe('RelatedFieldOfStudy')
 
 # COMMAND ----------
 
-RelatedFieldOfStudy = mag.getDataframe('RelatedFieldOfStudy')
-print('RelatedFieldOfStudy count:', RelatedFieldOfStudy.count())
+formatStr = '{:<16} | {:>8}'
+print(formatStr.format('Table', 'Count'))
+print('-----------------+---------')
+print(formatStr.format('Papers', Papers.count()))
+print(formatStr.format('Authors', Authors.count()))
+print(formatStr.format('FieldsOfStudy', FieldsOfStudy.count()))
+print(formatStr.format('ConferenceSeries', ConferenceSeries.count()))
+print(formatStr.format('Journals', Journals.count()))
+print(formatStr.format('Affiliations', Affiliations.count()))
+
+# COMMAND ----------
+
+formatStr = '{:<27} | {:>8}'
+print(formatStr.format('Table', 'Count'))
+print('----------------------------+---------')
+print(formatStr.format('ConferenceInstances', ConferenceInstances.count()))
+print(formatStr.format('EntityRelatedEntities', EntityRelatedEntities.count()))
+print(formatStr.format('FieldOfStudyChildren', FieldOfStudyChildren.count()))
+print(formatStr.format('PaperAbstractsInvertedIndex', PaperAbstractsInvertedIndex.count()))
+print(formatStr.format('PaperAuthorAffiliations', PaperAuthorAffiliations.count()))
+print(formatStr.format('PaperCitationContexts', PaperCitationContexts.count()))
+print(formatStr.format('PaperFieldsOfStudy', PaperFieldsOfStudy.count()))
+print(formatStr.format('PaperReferences', PaperReferences.count()))
+print(formatStr.format('PaperUrls', PaperUrls.count()))
+print(formatStr.format('PaperRecommendations', PaperRecommendations.count()))
+print(formatStr.format('PaperResources', PaperResources.count()))
+print(formatStr.format('RelatedFieldOfStudy', RelatedFieldOfStudy.count()))

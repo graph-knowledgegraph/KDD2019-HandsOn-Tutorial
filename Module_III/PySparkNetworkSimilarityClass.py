@@ -79,5 +79,5 @@ class NetworkSimilarity(AzureStorageAccess):
     else :
       df2 = df1.where((df1.EntityId != e) & (df1.EntityType == targetType))
 
-    df3 = df2.select(df2.EntityId, df2.EntityType, udfCosineSimilarity(F.lit(row1.Data), df2.Data).alias('score'))
-    return df3.where(df3.score >= minScore).orderBy(df3.score.desc()).limit(maxCount)
+    df3 = df2.select(df2.EntityId, df2.EntityType, udfCosineSimilarity(F.lit(row1.Data), df2.Data).alias('Score'))
+    return df3.where(df3.Score >= minScore).orderBy(df3.Score.desc()).limit(maxCount)
