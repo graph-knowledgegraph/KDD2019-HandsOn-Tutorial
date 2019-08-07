@@ -1,11 +1,16 @@
 # Databricks notebook source
-# MAGIC %run "./PySparkMagClass"
+# MAGIC %run "./TutorialClasses"
 
 # COMMAND ----------
 
+# Azure Storage account name
 MagAccount = 'kdd2019magstore'
+
+# MAG container name
 MagContainer = 'mag-2019-06-07'
-MagSAS = '' # Enter the shared access signature of MAG Container
+
+# Shared access signature of MAG Container
+MagSAS = ''
 
 # COMMAND ----------
 
