@@ -38,7 +38,8 @@ print(ns.getSimilarity(id1, id2))
 
 topEntities = ns.getTopEntities(id1)
 topEntitiesWithName = topEntities.join(Affiliations, topEntities.EntityId == Affiliations.AffiliationId, 'inner') \
-    .select(Affiliations.AffiliationId, Affiliations.DisplayName, topEntities.EntityType, topEntities.Score)
+    .select(Affiliations.AffiliationId, Affiliations.DisplayName, topEntities.EntityType, topEntities.Score) \
+    .orderBy(topEntities.Score.desc())
 display(topEntitiesWithName)
 
 # COMMAND ----------
@@ -57,11 +58,6 @@ print(ns.getSimilarity(id1, id2))
 
 # COMMAND ----------
 
-topEntities = ns.getTopEntities(id1)
-display(topEntities)
-
-# COMMAND ----------
-
 # Union conferences and journals to get venue dataframe
 conf = ConferenceSeries.select(ConferenceSeries.ConferenceSeriesId.alias('VenueId'), ConferenceSeries.NormalizedName, ConferenceSeries.DisplayName)
 jour = Journals.select(Journals.JournalId.alias('VenueId'), Journals.NormalizedName, Journals.DisplayName)
@@ -71,7 +67,8 @@ venues = conf.union(jour)
 
 topEntities = ns.getTopEntities(id1)
 topEntitiesWithName = topEntities.join(venues, topEntities.EntityId == venues.VenueId, 'inner') \
-    .select(venues.VenueId, venues.NormalizedName, venues.DisplayName, topEntities.EntityType, topEntities.Score)
+    .select(venues.VenueId, venues.NormalizedName, venues.DisplayName, topEntities.EntityType, topEntities.Score) \
+    .orderBy(topEntities.Score.desc())
 display(topEntitiesWithName)
 
 # COMMAND ----------
@@ -91,5 +88,6 @@ print(ns.getSimilarity(id1, id2))
 
 topEntities = ns.getTopEntities(id1)
 topEntitiesWithName = topEntities.join(FieldsOfStudy, topEntities.EntityId == FieldsOfStudy.FieldOfStudyId, 'inner') \
-    .select(FieldsOfStudy.FieldOfStudyId, FieldsOfStudy.DisplayName, topEntities.EntityType, topEntities.Score)
+    .select(FieldsOfStudy.FieldOfStudyId, FieldsOfStudy.DisplayName, topEntities.EntityType, topEntities.Score) \
+    .orderBy(topEntities.Score.desc())
 display(topEntitiesWithName)
