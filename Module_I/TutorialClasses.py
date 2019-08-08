@@ -7,9 +7,17 @@ import array
 # COMMAND ----------
 
 # s is a base64 encoded float[] with first element being the magnitude
-def Base64ToFloatArray(s):
+def Base64ToFloatArray(s, withMagnitudeColumn=True):
   arr = array.array('f', base64.b64decode(s))
-  return (arr[0], arr[1:])
+  if withMagnitudeColumn:
+    return (arr[0], arr[1:])
+  else:
+    return arr
+
+def cosineSimilarityN(s1, s2):
+  v1 = Base64ToFloatArray(s1, False)
+  v2 = Base64ToFloatArray(s2, False)
+  return sum(x*y for x,y in zip(v1, v2))
 
 def cosineSimilarity(s1, s2):
   (m1, v1) = Base64ToFloatArray(s1)
@@ -26,6 +34,10 @@ def cosineSimilarity(s1, s2):
 @F.udf("float")
 def udfCosineSimilarity(s1, s2):
   return cosineSimilarity(s1, s2)
+
+@F.udf("float")
+def udfCosineSimilarityN(s1, s2):
+  return cosineSimilarityN(s1, s2)
 
 # COMMAND ----------
 
@@ -242,3 +254,83 @@ class NetworkSimilarity(AzureStorageAccess):
 
     df3 = df2.select(df2.EntityId, df2.EntityType, udfCosineSimilarity(F.lit(row1.Data), df2.Data).alias('Score'))
     return df3.where(df3.Score >= minScore).orderBy(df3.Score.desc()).limit(maxCount)
+
+# COMMAND ----------
+
+# MAGIC %md **PaperSimilarity** class to compute paper recommendations
+
+# COMMAND ----------
+
+#   Parameters:
+#     resource: resource stream path
+#     container: container name in Azure Storage (AS) account
+#     account: Azure Storage (AS) account
+#     sas: complete 'Blob service SAS URL' of the shared access signature (sas) for the container
+#     key: access key for the container, if sas is specified, key is ignored
+#
+#   Note:
+#     resource does not have header
+#     you need to provide value for either sas or key
+#
+class PaperSimilarity(AzureStorageAccess):
+  # constructor
+  def __init__(self, resource, container, account, sas='', key=''):
+    AzureStorageAccess.__init__(self, container, account, sas, key)
+    schema = StructType()
+    schema.add(StructField('EntityId', LongType(), False))
+    schema.add(StructField('Data', StringType(), False))
+    self.df = spark.read.format('csv').options(header='false', delimiter='\t').schema(schema).load(self.getFullpath(resource))
+    self.mag = MicrosoftAcademicGraph(container, account, sas=sas)
+    self.corefdf = self._compute_cocitations()
+    
+  def getDataframe(self):
+    return self.df
+  
+  def _getCoRefDataframe(self):
+    return self.corefdf
+  
+  def raiseErrorIfNotFound(self, row, e):
+    if row is None:
+      raise KeyError('entity ' + str(e) + ' not found')
+
+  def getSimilarity(self, e1, e2):
+    df = self.df
+    row1 = df.where(df.EntityId == e1).first()
+    self.raiseErrorIfNotFound(row1, e1)
+    row2 = df.where(df.EntityId == e2).first()
+    self.raiseErrorIfNotFound(row2, e2)
+    return cosineSimilarityN(row1.Data, row2.Data)
+
+  def getTopEntities(self, e, method="embedding", maxCount = 20, minScore = 0.0):
+    if method == 'cocitation':
+      return self._getTopEntitiesByCocitation(e, maxCount, minScore)
+    else:
+      return self._getTopEntitiesByEmbedding(e, maxCount, minScore)
+  
+  def _getTopEntitiesByEmbedding(self, e, maxCount, minScore):
+    df1 = self.df
+    paperdf = self.mag.getDataframe('Papers')
+    row1 = df1.where(df1.EntityId == e).first()
+    df2 = df1.where(df1.EntityId != e)
+    df3 = df2.select(df2.EntityId, udfCosineSimilarityN(F.lit(row1.Data), df2.Data).alias('Score'))
+    return df3.join(paperdf, df3.EntityId == paperdf.PaperId, 'inner').select(paperdf.PaperId, paperdf.PaperTitle, df3.Score).where((~F.isnan(df3.Score)) & (df3.Score >= minScore)).orderBy(df3.Score.desc()).limit(maxCount)
+  
+  def _getTopEntitiesByCocitation(self, e, maxCount, minScore):
+    df1 = self.corefdf
+    paperdf = self.mag.getDataframe('Papers')
+    df2 = df1.where(df1.ReferenceId == e)
+    return df2.join(paperdf, df2.CoReferenceId == paperdf.PaperId, 'inner').select(paperdf.PaperId, paperdf.PaperTitle, df2.Score).where(df2.Score >= minScore).orderBy(df2.Score.desc()).limit(maxCount)
+  
+  def _compute_cocitations(self, coreferenceLimit=50):
+    pr1 = self.mag.getDataframe('PaperReferences')
+    pr1 = pr1.selectExpr("PaperId as PaperId1", "PaperReferenceId as PaperReferenceId1" )
+
+    pr2 = self.mag.getDataframe('PaperReferences')
+    pr2 = pr2.selectExpr("PaperId as PaperId2", "PaperReferenceId as PaperReferenceId2" )
+
+    return pr1.join(pr2, pr1.PaperId1 == pr2.PaperId2, 'inner').filter(pr1.PaperReferenceId1 < pr2.PaperReferenceId2).select(pr1.PaperReferenceId1.alias('ReferenceId'), pr2.PaperReferenceId2.alias('CoReferenceId')).groupBy('ReferenceId', 'CoReferenceId').count().orderBy(F.desc('count')).selectExpr("ReferenceId as ReferenceId", "CoReferenceId as CoReferenceId", "count as Score").limit(coreferenceLimit)
+
+
+# COMMAND ----------
+
+
