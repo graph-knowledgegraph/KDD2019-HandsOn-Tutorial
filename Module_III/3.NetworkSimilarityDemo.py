@@ -1,4 +1,8 @@
 # Databricks notebook source
+# MAGIC %md # Module III. Network Similarity
+
+# COMMAND ----------
+
 # MAGIC %run "./TutorialClasses"
 
 # COMMAND ----------
@@ -22,7 +26,10 @@ Journals = mag.getDataframe('Journals')
 
 # COMMAND ----------
 
-# Affiliation Similarity
+# MAGIC %md ## Similar Affiliations
+
+# COMMAND ----------
+
 ResourcePath = 'ns/AffiliationEmbedding_d100.tsv'
 ns = NetworkSimilarity(resource=ResourcePath, container=MagContainer, account=MagAccount, sas=MagSAS)
 df = ns.getDataframe()
@@ -44,7 +51,10 @@ display(topEntitiesWithName)
 
 # COMMAND ----------
 
-# Venues
+# MAGIC %md ## Similar Venues
+
+# COMMAND ----------
+
 ResourcePath = 'ns/VenueEmbedding_d100.tsv'
 ns = NetworkSimilarity(resource=ResourcePath, container=MagContainer, account=MagAccount, sas=MagSAS)
 df = ns.getDataframe()
@@ -73,7 +83,10 @@ display(topEntitiesWithName)
 
 # COMMAND ----------
 
-# Fields of Study
+# MAGIC %md ## Similar Fields of Study
+
+# COMMAND ----------
+
 ResourcePath = 'ns/FosEmbedding_d100.tsv'
 ns = NetworkSimilarity(resource=ResourcePath, container=MagContainer, account=MagAccount, sas=MagSAS)
 df = ns.getDataframe()

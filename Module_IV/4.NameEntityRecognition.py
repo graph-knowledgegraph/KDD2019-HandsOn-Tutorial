@@ -1,4 +1,8 @@
 # Databricks notebook source
+# MAGIC %md # Module IV. Name Entity Recognition
+
+# COMMAND ----------
+
 import requests
 import json
 

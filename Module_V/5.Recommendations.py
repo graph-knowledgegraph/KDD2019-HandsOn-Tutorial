@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %md # Paper Recommendations and Content Similarity
+# MAGIC %md # Module V. Paper Recommendations and Content Similarity
 
 # COMMAND ----------
 

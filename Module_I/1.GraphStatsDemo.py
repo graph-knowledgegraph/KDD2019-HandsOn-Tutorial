@@ -1,5 +1,13 @@
 # Databricks notebook source
+# MAGIC %md # Module I. Graph Stats
+
+# COMMAND ----------
+
 # MAGIC %run "./TutorialClasses"
+
+# COMMAND ----------
+
+# MAGIC %md ## Get Dataframes
 
 # COMMAND ----------
 
@@ -43,6 +51,10 @@ RelatedFieldOfStudy = mag.getDataframe('RelatedFieldOfStudy')
 
 # COMMAND ----------
 
+# MAGIC %md ## Entity Counts
+
+# COMMAND ----------
+
 formatStr = '{:<16} | {:>8}'
 print(formatStr.format('Table', 'Count'))
 print('-----------------+---------')
@@ -52,6 +64,10 @@ print(formatStr.format('FieldsOfStudy', FieldsOfStudy.count()))
 print(formatStr.format('ConferenceSeries', ConferenceSeries.count()))
 print(formatStr.format('Journals', Journals.count()))
 print(formatStr.format('Affiliations', Affiliations.count()))
+
+# COMMAND ----------
+
+# MAGIC %md ## Other Dataframe Counts
 
 # COMMAND ----------
 

@@ -35,7 +35,7 @@ Key takeaways for attendees will be:
 
 | Time        | Module           | Slides  | Codes  |
 | ------------- |-------------| -----|------| 
-| 9:30am  - 10:30am      | [I: Welcome, Setup, Dataset](./Module_I/README.md) | [link](./Module_I/Module_I_GraphKnowledgeGraph_KDD2019_HandsOn.pdf)| [link](./Module_I/1.GraphStatsDemo.py) |
+| 9:30am  - 10:30am      | [I: Welcome, Setup, Dataset](./Module_I/README.md) | [link](./Module_I/Module_I_GraphKnowledgeGraph_KDD2019_HandsOn.pdf)| [link1](./Module_I/TutorialClasses.py) [link2](./Module_I/1.GraphStatsDemo.py) |
 | 10:30am - 11:15am      | [II: Graph Basics](./Module_II/README.md) | [link](./Module_II/Module_II_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | [link](./Module_II/2.GraphBasics.py) |
 | 11:15am - 12:00pm      | [III: Graph Representation Learning](./Module_III/README.md) | [link](./Module_III/Module_III_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | [link](./Module_III/3.NetworkSimilarityDemo.py) |
 | 12:00pm - 1:00pm       | LUNCH BREAK |  |  |

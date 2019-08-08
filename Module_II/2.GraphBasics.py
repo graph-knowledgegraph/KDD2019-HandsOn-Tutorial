@@ -1,4 +1,8 @@
 # Databricks notebook source
+# MAGIC %md # Module II. Graph Basics
+
+# COMMAND ----------
+
 # MAGIC %run "./TutorialClasses"
 
 # COMMAND ----------
