@@ -10,7 +10,7 @@ MagAccount = 'kdd2019magstore'
 MagContainer = 'mag-2019-06-07'
 
 # Shared access signature of MAG Container
-MagSAS = ''
+MagSAS = '?sv=2018-03-28&ss=bfqt&srt=sco&sp=rl&se=2019-08-10T02:22:11Z&st=2019-07-31T18:22:11Z&spr=https&sig=m8XIxbDhk3ZOBt5ceVYIodw3k0JhbXodUBZDxXOThcs%3D'
 
 # COMMAND ----------
 
