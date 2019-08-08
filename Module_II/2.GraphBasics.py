@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %run "./PySparkMagClass"
+# MAGIC %run "./TutorialClasses"
 
 # COMMAND ----------
 
