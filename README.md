@@ -7,7 +7,7 @@ _Contributors_: _**Yuxiao Dong, Junjie Qian**_
 
 **Microsoft Research - Microsoft Academic Graph team**
 
-_Time_: _**Thu, August 08, 2019, 9:30 am - 12:30 pm and 1:30 pm - 4:30 pm**_
+_Time_: _**Thu, August 08, 2019, 9:30 am - 12:00 pm and 1:00 pm - 3:30 pm**_
 
 ## Abstract
 
@@ -35,13 +35,13 @@ Key takeaways for attendees will be:
 
 | Time        | Module           | Slides  | Codes  |
 | ------------- |-------------| -----|------| 
-| 9:30am  - 10:30am      | [I: Welcome, Setup, Dataset](./Module_I/README.md) | [link](./Module_I/Module_I_GraphKnowledgeGraph_KDD2019_HandsOn.pdf)| [link](./Module_I/GraphStatsDemo.ipynb) |
-| 10:30am - 11:30am      | [II: Graph Basics](./Module_II/README.md) | [link](./Module_II/Module_II_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | link |
-| 11:30am - 12:30pm      | [III: Graph Representation Learning](./Module_III/README.md) | [link](./Module_III/Module_III_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | [link](./Module_III/NetworkSimilarityDemo.ipynb) |
-| 12:30pm - 1:00pm       | LUNCH BREAK |  |  |
-| 1:00pm  - 2:20pm       | [IV: Knowledge Graph Fundamentals and Construction](./Module_IV/README.md) | [link](./Module_IV/Module_IV_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | link |
-| 2:20pm  - 3:30pm       | [V: Knowledge Graph Inference and Application](./Module_V/README.md) | [link](./Module_V/Module_V_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | link |
-| 3:30pm  - 3:50pm       | [VI: Summary and looking forward](./Module_VI/README.md) | [link](./Module_VI/Module_VI_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | n/a |
+| 9:30am  - 10:30am      | [I: Welcome, Setup, Dataset](./Module_I/README.md) | [link](./Module_I/Module_I_GraphKnowledgeGraph_KDD2019_HandsOn.pdf)| [link](./Module_I/1.GraphStatsDemo.py) |
+| 10:30am - 11:15am      | [II: Graph Basics](./Module_II/README.md) | [link](./Module_II/Module_II_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | [link](./Module_II/2.GraphBasics.py) |
+| 11:15am - 12:00pm      | [III: Graph Representation Learning](./Module_III/README.md) | [link](./Module_III/Module_III_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | [link](./Module_III/3.NetworkSimilarityDemo.py) |
+| 12:00pm - 1:00pm       | LUNCH BREAK |  |  |
+| 1:00pm  - 2:05pm       | [IV: Knowledge Graph Fundamentals and Construction](./Module_IV/README.md) | [link](./Module_IV/Module_IV_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | [link](./Module_IV/4.NameEntityRecognition.py) |
+| 2:05pm  - 3:10pm       | [V: Knowledge Graph Inference and Applications](./Module_V/README.md) | [link](./Module_V/Module_V_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | [link](./Module_V/5.Recommendations.py) |
+| 3:10pm  - 3:30pm       | [VI: Summary and Looking Forward](./Module_VI/README.md) | [link](./Module_VI/Module_VI_GraphKnowledgeGraph_KDD2019_HandsOn.pdf) | n/a |
 
 ## Previous Edition
 
